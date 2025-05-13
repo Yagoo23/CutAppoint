@@ -1,15 +1,17 @@
 <h1 class="nombre-pagina">Login</h1>
 <p class="descripcion-pagina">Inicia sesión con tus datos</p>
 
+<?php include_once __DIR__ . "/../templates/alertas.php"; ?>
+
 <form method="post" action="/" class="formulario">
     <div class="campo">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Tu email" required>
+        <input type="email" id="email" name="email" placeholder="Tu email">
     </div>
 
     <div class="campo">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
+        <input type="password" id="password" name="password" placeholder="Tu contraseña">
     </div>
 
     <input type="submit" value="Iniciar Sesión" class="boton">
