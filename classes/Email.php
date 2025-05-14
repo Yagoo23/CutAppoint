@@ -43,4 +43,33 @@ class Email {
         //Enviar el email
         $mail->send();
     }
+
+    public function enviarInstrucciones() {
+        // Crear el objeto de email
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Port = 2525;
+        $mail->Username = '84633b4acc56fe';
+        $mail->Password = 'd041f2f7bb467e';
+        $mail->setFrom('cuentas@cutappoint.com');
+        $mail->addAddress('cuentas@cutappoint.com','CutAppoint.com');
+        $mail->Subject = 'Reestablece tu contraseña';
+
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+
+        // Crear el contenido del email
+        $contenido = "<html>";
+        $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>. Has solicitado reestablecer tu contraseña. Entre en el siguiente enlace para hacerlo.</p>";
+        $contenido .= "Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token ."'>Reestablecer contraseña</a>";
+        $contenido .= "<p>Si no solicitaste este cambio, puedes ignorar este mensaje.</p>";
+        $contenido .= "</html>";
+    
+        $mail->Body = $contenido;
+
+        //Enviar el email
+        $mail->send();
+    }
 }
