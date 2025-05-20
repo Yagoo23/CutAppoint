@@ -3,6 +3,7 @@ const pasoInicial = 1;
 const pasoFinal = 3;
 
 const cita = {
+    id: "",
     nombre: "",
     fecha: "",
     hora: "",
@@ -22,6 +23,8 @@ function iniciarApp() {
     paginaSiguiente(); // Cambia la seccion al siguiente paso
 
     consultarAPI(); //Consulta la API en el backend de PHP
+
+    idCliente(); // Agrega el id del cliente al objeto de cita
     nombreCliente(); // Agrega el nombre del cliente al objeto de cita
     seleccionarFecha(); // Añade la fecha de la cita
     seleccionarHora(); // Añade la hora de la cita
@@ -148,6 +151,10 @@ function seleccionarServicio(servicio) {
     console.log(cita);
 }
 
+function idCliente() {
+   cita.id = document.querySelector("#id").value;
+}
+
 function nombreCliente() {
    cita.nombre = document.querySelector("#nombre").value;
 }
@@ -210,13 +217,13 @@ function mostrarResumen() {
     }
     //Mostrar el resumen
     const { nombre, fecha, hora, servicios } = cita;
-    const nombreCliente = document.createElement("P");
-    nombreCliente.innerHTML = `<span>Nombre:</span> ${nombre}`;
-    const fechaCita = document.createElement("P");
-    fechaCita.innerHTML = `<span>Fecha:</span> ${fecha}`;
-    const horaCita = document.createElement("P");
-    horaCita.innerHTML = `<span>Hora:</span> ${hora}`;
-    
+
+    //Heading para servicios resumen
+    const headingServicios = document.createElement("H3");
+    headingServicios.textContent = "Resumen de los servicios";
+    resumen.appendChild(headingServicios);
+
+    //Iterar sobre los servicios
     servicios.forEach(servicio => {
         const { id,nombre, precio } = servicio;
         const servicioTexto = document.createElement("P");
@@ -228,14 +235,75 @@ function mostrarResumen() {
         textoServicio.textContent = nombre;
 
         const precioServicio = document.createElement("P");
-        precioServicio.textContent = `${precio}€`;
+        precioServicio.innerHTML = `<span>Precio: </span>${precio}€`;
         contenedorServicio.appendChild(textoServicio);
         contenedorServicio.appendChild(precioServicio);
         resumen.appendChild(contenedorServicio);
     });
 
+    const headingCita = document.createElement("H3");
+    headingCita.textContent = "Resumen de la cita";
+    resumen.appendChild(headingCita);
+
+    const nombreCliente = document.createElement("P");
+    nombreCliente.innerHTML = `<span>Nombre:</span> ${nombre}`;
+
+    //Formatear la fecha
+    const fechaObj = new Date(fecha);
+    const mes = fechaObj.getMonth();
+    const dia = fechaObj.getDate();
+    const year = fechaObj.getFullYear();
+
+    const fechaUTC = new Date(Date.UTC(year, mes, dia));
+    const fechaFormateada = fechaUTC.toLocaleDateString("es-ES", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+
+    const fechaCita = document.createElement("P");
+    fechaCita.innerHTML = `<span>Fecha:</span> ${fechaFormateada}`;
+    const horaCita = document.createElement("P");
+    horaCita.innerHTML = `<span>Hora:</span> ${hora}`;
+
+    //Botón para crear cita
+    const botonReservar = document.createElement("BUTTON");
+    botonReservar.classList.add("boton");
+    botonReservar.textContent = "Reservar cita";
+    botonReservar.onclick = reservarCita;
+
     resumen.appendChild(nombreCliente);
     resumen.appendChild(fechaCita);
     resumen.appendChild(horaCita);
+
+    resumen.appendChild(botonReservar);
+
+}
+
+async function reservarCita() {
+    
+    const { nombre, fecha, hora, servicios, id } = cita;
+
+    const idServicios = servicios.map( servicio => servicio.id );
+    // console.log(idServicios);
+
+    const datos = new FormData();
+    
+    datos.append('fecha', fecha);
+    datos.append('hora', hora );
+    datos.append('usuario_id', id);
+    datos.append('servicios', idServicios);
+
+    // console.log([...datos]);
+        // Petición hacia la api
+        const url = 'http://localhost:3000/api/citas'
+        const respuesta = await fetch(url, {
+            method: 'POST',
+            body: datos
+        });
+
+        const resultado = await respuesta.json();
+        console.log(resultado);
 
 }
