@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\CitaServicio;
 use Model\Servicio;
 use Model\Cita;
 
@@ -15,8 +16,26 @@ class APIController{
         // Almacena la Cita y devuelve el ID
         $cita = new Cita($_POST);
         $resultado = $cita->guardar();
+
+        $id = $resultado['id'];
+
         // Almacena la Cita y el Servicio
 
+        // Almacena los Servicios with el ID de la Cita
+        $idServicios = explode(",", $_POST['servicios']);
+        $idServicios = array_map('trim', $idServicios);
+
+        foreach($idServicios as $idServicio) {
+            $idServicio = trim($idServicio); // Limpia espacios
+            if ($idServicio !== '') { // Evita insertar servicios vacíos
+                $args = [
+                    'cita_Id' => trim($id), // Por si acaso $id tiene espacios
+                    'servicio_Id' => $idServicio
+                ];
+                $citaServicio = new CitaServicio($args);
+                $citaServicio->guardar();
+            }
+        }
 
         echo json_encode(['resultado' => $resultado]);
     }
