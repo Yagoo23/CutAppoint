@@ -19,11 +19,11 @@ class Email {
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '84633b4acc56fe';
-        $mail->Password = 'd041f2f7bb467e';
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
         $mail->setFrom('cuentas@cutappoint.com');
         $mail->addAddress('cuentas@cutappoint.com','CutAppoint.com');
         $mail->Subject = 'Confirma tu cuenta';
@@ -34,7 +34,7 @@ class Email {
         // Crear el contenido del email
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>. Has creado tu cuenta en CutAppoint, confirma tu cuenta haciendo click en el siguiente enlace:</p>";
-        $contenido .= "Presiona aquí: <a href='http://localhost:3000/confirmar-cuenta?token=" . $this->token ."'>Confirmar cuenta</a>";
+        $contenido .= "Presiona aquí: <a href='". $_ENV['APP_URL']  ."/confirmar-cuenta?token=" . $this->token ."'>Confirmar cuenta</a>";
         $contenido .= "<p>Si no solicitaste esta cuenta, puedes ignorar este mensaje.</p>";
         $contenido .= "</html>";
     
@@ -48,11 +48,12 @@ class Email {
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'sandbox.smtp.mailtrap.io';
+        $mail->Host = $_ENV['EMAIL_HOST'];
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '84633b4acc56fe';
-        $mail->Password = 'd041f2f7bb467e';
+        $mail->Port = $_ENV['EMAIL_PORT'];
+        $mail->Username = $_ENV['EMAIL_USER'];
+        $mail->Password = $_ENV['EMAIL_PASS'];
+
         $mail->setFrom('cuentas@cutappoint.com');
         $mail->addAddress('cuentas@cutappoint.com','CutAppoint.com');
         $mail->Subject = 'Reestablece tu contraseña';
@@ -63,7 +64,7 @@ class Email {
         // Crear el contenido del email
         $contenido = "<html>";
         $contenido .= "<p><strong>Hola " . $this->nombre . "</strong>. Has solicitado reestablecer tu contraseña. Entre en el siguiente enlace para hacerlo.</p>";
-        $contenido .= "Presiona aquí: <a href='http://localhost:3000/recuperar?token=" . $this->token ."'>Reestablecer contraseña</a>";
+        $contenido .= "Presiona aquí: <a href='". $_ENV['APP_URL']  ."/recuperar?token=" . $this->token ."'>Reestablecer contraseña</a>";
         $contenido .= "<p>Si no solicitaste este cambio, puedes ignorar este mensaje.</p>";
         $contenido .= "</html>";
     
