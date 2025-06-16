@@ -6,7 +6,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "build": "node ./node_modules/gulp/bin/gulp.js"
   },
   "license": "ISC",
   "devDependencies": {
