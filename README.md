@@ -62,4 +62,21 @@ Esta arquitectura está diseñada para facilitar:
 
 ## Clockify
 
+![clockify1](src/img/Clockify1.png)
+![clockify2](src/img/Clockify2.png)
 
+## 9. Presupuesto de la aplicación
+
+A continuación se detalla el presupuesto estimado para el desarrollo de la aplicación, incluyendo el coste del software amortizado utilizado en cada fase del ciclo de vida:
+
+| Fase           | Horas estimadas | Coste/hora | Coste personal | Software utilizado           | Coste software amortizado | Coste total fase |
+|----------------|-----------------|------------|----------------|-----------------------------|---------------------------|------------------|
+| Análisis       | 20              | 20 €       | 400 €          | VS Code, Clockify           | 0 €                       | 400 €            |
+| Diseño         | 30              | 20 €       | 600 €          | Figma (10 €), Photoshop     | 10 €                      | 610 €            |
+| Desarrollo     | 76              | 20 €       | 1.520 €        | VS Code, Node, GitHub       | 10 €                      | 1.530 €          |
+| Pruebas        | 30              | 20 €       | 600 €          | GitHub                      | 0 €                       | 600 €            |
+| Despliegue     | 40              | 20 €       | 800 €          | VS Code, Hosting (15 €)     | 5 €                       | 805 €            |
+| Mantenimiento  | 14             | 20 €       | 280 €          | VS Code                     | 0 €                       | 280 €            |
+| **TOTAL**      | **210**         |            | **4.200 €**    |                             | **25 €**                  | **4.225 €**      |
+
+> **Nota:** El coste del software amortizado se calcula en función del tiempo de uso de las licencias durante el proyecto. La mayoría de las herramientas empleadas son gratuitas o de código abierto, salvo indicación expresa.
