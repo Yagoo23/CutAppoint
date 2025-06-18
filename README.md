@@ -49,6 +49,17 @@ Esta arquitectura está diseñada para facilitar:
 
 
 ### Diagrama de componentes
-![alt text](image.png)
+![Diagrama de componentes](src/img/diagrama.png)
+
+
+### Diagrama de Gantt previo
+![gantt](src/img/gantt.png)
+![gantt2](src/img/gantt2.png)
+
+### Diagrama de Gantt final
+![ganttFinal1](src/img/ganttFinal1.png)
+![ganttFinal2](src/img/ganttFinal2.png)
+
+## Clockify
 
 
