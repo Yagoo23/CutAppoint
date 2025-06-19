@@ -1,7 +1,7 @@
 # CutAppoint - Sistema de Gestión de Citas
 ## 1. Motivación
 
-El sector de las peluquerías, especialmente las pequeñas y medianas, afronta importantes retos en la gestión de citas y en la atención al cliente debido al uso de métodos tradicionales poco eficientes. Esto nace para facilitar la digitalización de estos negocios, ofreciendo una solución sencilla y accesible que mejora la organización de las citas, reduce errores y optimiza el tiempo.
+El sector de las peluquerías, especialmente las pequeñas y medianas, afronta retos en la gestión de citas debido al uso de métodos tradicionales poco eficientes. Esto nace para facilitar la digitalización de estos negocios, ofreciendo una solución sencilla y accesible que mejora la organización de las citas, reduce errores y optimiza el tiempo.
 
 ## 2. Demostración del funcionamiento de la aplicación, en base a los objetivos definidos en el anteproyecto.
 
