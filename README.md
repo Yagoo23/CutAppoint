@@ -6,12 +6,12 @@ El sector de las peluquerías, especialmente las pequeñas y medianas, afronta r
 ## 2. Demostración del funcionamiento de la aplicación, en base a los objetivos definidos en el anteproyecto.
 
 ## 3. Justificación de los objetivos alcanzados y no alcanzados
-Durante el desarrollo se cumplieron los objetivos definidos en las historias de usuario. El panel de administración permite a los propietarios gestionar los servicios ofrecidos, tanto creando, editando o eliminando, asi como ver las citas buscando por fecha o eliminando. En el portal del cliente, los usuarios pueden consultar los servicios, precios, reservar citas de forma sencilla y recibir confirmación. Además, se implementó un sistema de envío de email para la confirmación de cuenta y cambio de contraseña. Todas las funcionalidades previstas fueron implementadas.
+Durante el desarrollo se cumplieron los objetivos definidos en las historias de usuario. El panel de administración permite a los propietarios gestionar los servicios ofrecidos, tanto creando, editando o eliminando, asi como ver citas buscando por fecha o eliminándolas. En el portal del cliente, los usuarios pueden consultar los servicios, precios, reservar citas de forma sencilla y recibir confirmación. Además, se implementó un sistema de envío de email para la confirmación de cuenta y cambio de contraseña. Todas las funcionalidades previstas fueron implementadas.
 
 ## 4. Descripción técnica
 ### Descripción General
 
-Implementa una arquitectura MVC que proporciona una clara separación de responsabilidades y un código mantenible.
+Se implementa una arquitectura MVC que proporciona una clara separación de responsabilidades y un código mantenible.
 Esta separación facilita el mantenimiento del código, su escalabilidad y la reutilización de componentes, ya que cada parte tiene una función bien definida y los cambios en una no afectan directamente a las demás. Por lo tanto, proporciona una base sólida y mantenible para el desarrollo.
 
 ### Estructura del Proyecto
@@ -23,15 +23,6 @@ Esta separación facilita el mantenimiento del código, su escalabilidad y la re
 ├── 📁 public/         # Archivos públicos accesibles (CSS, JS, imágenes)
 └── 📁 includes/       # Utilidades y configuraciones del sistema
 ```
-
-### Flujo de la Aplicación
-
-1. **Entrada**: El usuario accede a una URL específica
-2. **Enrutamiento**: El Router analiza la URL y dirige la petición
-3. **Procesamiento**: El Controlador maneja la petición utilizando los Modelos
-4. **Datos**: Los Modelos interactúan con la base de datos MySQL
-5. **Presentación**: El Controlador envía datos a la Vista correspondiente
-6. **Respuesta**: La Vista genera el HTML final para el usuario
 
 ### Tecnologías Principales
 
@@ -46,12 +37,9 @@ Esta separación facilita el mantenimiento del código, su escalabilidad y la re
   - JavaScript para interactividad
   - Gulp como herramienta de construcción
 
-Esta arquitectura está diseñada para facilitar:
-- Desarrollo modular
-- Mantenibilidad del código
-- Escalabilidad del proyecto
-- Testing efectivo
-- Separación clara de responsabilidades
+
+### Diagrama de componentes
+![Diagrama de componentes](src/img/diagrama.png)
 
 ## 6. Metodología de desarrollo utilizada
 
@@ -62,9 +50,6 @@ La metodología de desarrollo utilizada se basa en un flujo de trabajo estándar
 - **Commits frecuentes y descriptivos:** Cada cambio se registra mediante commits.
 - **Pull Requests:** Las nuevas funcionalidades o correcciones se integran a la rama principal mediante Pull Requests.
 - **Integración continua:** El código se prueba y revisa antes de ser desplegado.
-
-### Diagrama de componentes
-![Diagrama de componentes](src/img/diagrama.png)
 
 ## 7. Diagramas de Gantt
 ### Diagrama de Gantt previo
@@ -87,14 +72,8 @@ Además, el uso de herramientas adecuadas y la experiencia adquirida durante el 
 
 ### Análisis y justificación del tiempo invertido
 
-- **Análisis (20h):** Definición de requisitos y objetivos.
-- **Diseño (30h):** Creación de la arquitectura.
 - **Desarrollo (76h):** Implementación de la lógica, base de datos y vistas.
-- **Pruebas (30h):** Verificación de funcionalidades y corrección de errores.
-- **Despliegue (40h):** Configuración del servidor, Docker y AWS; fase más díficil por falta de experiencia previa.
-- **Mantenimiento (14h):** Ajustes menores y soporte tras el lanzamiento.
 
-El uso de Clockify ayudó a controlar y optimizar el tiempo dedicado a cada tarea.
 
 ## 9. Presupuesto de la aplicación
 
@@ -103,7 +82,7 @@ A continuación se detalla el presupuesto estimado para el desarrollo de la apli
 | Fase           | Horas estimadas | Coste/hora | Coste personal | Software utilizado           | Coste software amortizado | Coste total fase |
 |----------------|-----------------|------------|----------------|-----------------------------|---------------------------|------------------|
 | Análisis       | 20              | 20 €       | 400 €          | VS Code, Clockify           | 0 €                       | 400 €            |
-| Diseño         | 30              | 20 €       | 600 €          | Figma (10 €), Photoshop     | 10 €                      | 610 €            |
+| Diseño         | 30              | 20 €       | 600 €          | Figma (10 €)     | 10 €                      | 610 €            |
 | Desarrollo     | 76              | 20 €       | 1.520 €        | VS Code, Node, GitHub       | 10 €                      | 1.530 €          |
 | Pruebas        | 30              | 20 €       | 600 €          | GitHub                      | 0 €                       | 600 €            |
 | Despliegue     | 40              | 20 €       | 800 €          | VS Code, Hosting (15 €)     | 5 €                       | 805 €            |
@@ -120,5 +99,5 @@ A continuación se detalla el presupuesto estimado para el desarrollo de la apli
 
   ### Principales dificultades encontradas
 
-Durante el desarrollo, me encontré con varios desafíos, especialmente a la hora de estructurar el proyecto y al implementar el patrón ActiveRecord para interactuar con la base de datos. También dediqué tiempo a hacer el diseño de la aplicación, sobre todo en el CSS, para que la interfaz fuera clara, atractiva y funcional.
-La mayor dificultad llegó durante el despliegue, donde tuve problemas tanto con la configuración del servidor como con la creación del archivo Dockerfile. Como era mi primera vez trabajando con AWS, todo el proceso de gestionar la aplicación también me supuso un reto.
+Durante el desarrollo, me encontré con varios desafíos, especialmente a la hora de estructurar el proyecto. También dediqué tiempo a hacer el diseño de la aplicación, sobre todo en el CSS, para que la interfaz fuera clara, atractiva y funcional.
+La mayor dificultad llegó durante el despliegue, donde tuve problemas tanto con la configuración del servidor como con la creación del archivo Dockerfile. Como era mi primera vez trabajando con AWS, todo el proceso de gestionarlo también me supuso un reto.
